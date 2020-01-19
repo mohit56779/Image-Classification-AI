@@ -2,6 +2,7 @@ import React from 'react';
 import Clarifai from 'clarifai';
 import Navigation from './components/Navigation/Navigation';
 import Signin from './components/Signin/Signin';
+import Register from './components/Register/Register';
 import FoodRecognition from './components/FoodRecognition/FoodRecognition';
 import Rank from './components/Rank/Rank.js';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm.js';
@@ -20,7 +21,8 @@ class App extends React.Component {
     super();
     this.state={
       input:"",
-      imageUrl: ""
+      imageUrl: "",
+      route: 'signin'
     }
   }
 
@@ -60,19 +62,27 @@ class App extends React.Component {
       })
   }
 
+  onRouteChange = (route) => {
+    this.setState({route: route});
+
+  }
  
   render(){
   return (
     <div className="App">
       
       
-      <Navigation />
-      <Signin />
-      <Rank />
-      <ImageLinkForm onInputChange = {this.onInputChange} onButtonSubmit = {this.onButtonSubmit}/>
+      <Navigation onRouteChange={this.onRouteChange} />
+      { this.state.route === 'signin'
+        ? <Signin onRouteChange={this.onRouteChange} />
+        : <div>
+            <Rank />
+            <ImageLinkForm onInputChange = {this.onInputChange} onButtonSubmit = {this.onButtonSubmit}/>
 
-  
-      <FoodRecognition imageUrl = {this.state.imageUrl} />
+    
+            <FoodRecognition imageUrl = {this.state.imageUrl} />
+          </div>
+      }
     </div>
   );
     }
