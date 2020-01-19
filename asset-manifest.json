@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/Image-Classification-AI/static/css/main.8c2c036a.chunk.css",
+    "main.js": "/Image-Classification-AI/static/js/main.318577b7.chunk.js",
+    "main.js.map": "/Image-Classification-AI/static/js/main.318577b7.chunk.js.map",
+    "runtime-main.js": "/Image-Classification-AI/static/js/runtime-main.85205ce3.js",
+    "runtime-main.js.map": "/Image-Classification-AI/static/js/runtime-main.85205ce3.js.map",
+    "static/css/2.eb45ad44.chunk.css": "/Image-Classification-AI/static/css/2.eb45ad44.chunk.css",
+    "static/js/2.36348418.chunk.js": "/Image-Classification-AI/static/js/2.36348418.chunk.js",
+    "static/js/2.36348418.chunk.js.map": "/Image-Classification-AI/static/js/2.36348418.chunk.js.map",
+    "index.html": "/Image-Classification-AI/index.html",
+    "precache-manifest.e55e6966ea8bf3c268fe6003dab6540e.js": "/Image-Classification-AI/precache-manifest.e55e6966ea8bf3c268fe6003dab6540e.js",
+    "service-worker.js": "/Image-Classification-AI/service-worker.js",
+    "static/css/2.eb45ad44.chunk.css.map": "/Image-Classification-AI/static/css/2.eb45ad44.chunk.css.map",
+    "static/css/main.8c2c036a.chunk.css.map": "/Image-Classification-AI/static/css/main.8c2c036a.chunk.css.map",
+    "static/js/2.36348418.chunk.js.LICENSE": "/Image-Classification-AI/static/js/2.36348418.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.85205ce3.js",
+    "static/css/2.eb45ad44.chunk.css",
+    "static/js/2.36348418.chunk.js",
+    "static/css/main.8c2c036a.chunk.css",
+    "static/js/main.318577b7.chunk.js"
+  ]
+}
