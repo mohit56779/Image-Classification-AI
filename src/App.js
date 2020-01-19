@@ -2,6 +2,7 @@ import React from 'react';
 import Clarifai from 'clarifai';
 import Navigation from './components/Navigation/Navigation';
 import Signin from './components/Signin/Signin';
+import Register from './components/Register/Register';
 import FoodRecognition from './components/FoodRecognition/FoodRecognition';
 import InferText from './components/InferText/InferText.js';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm.js';
@@ -22,7 +23,11 @@ class App extends React.Component {
     this.state={
       input:"",
       imageUrl: "",
+<<<<<<< HEAD
+      route: 'signin'
+=======
       change:""
+>>>>>>> b5b04e06d47e32eb99289beb02a18b19198485b1
     }
   }
 
@@ -88,6 +93,32 @@ class App extends React.Component {
   }
   
 
+<<<<<<< HEAD
+  onRouteChange = (route) => {
+    this.setState({route: route});
+
+  }
+ 
+  render(){
+  return (
+    <div className="App">
+      
+      
+      <Navigation onRouteChange={this.onRouteChange} />
+      { this.state.route === 'signin'
+        ? <Signin onRouteChange={this.onRouteChange} />
+        : <div>
+            <Rank />
+            <ImageLinkForm onInputChange = {this.onInputChange} onButtonSubmit = {this.onButtonSubmit}/>
+
+    
+            <FoodRecognition imageUrl = {this.state.imageUrl} />
+          </div>
+      }
+    </div>
+  );
+    }
+=======
   render(){
 
   if(this.check === true){
@@ -143,6 +174,7 @@ class App extends React.Component {
               }
   
 }
+>>>>>>> b5b04e06d47e32eb99289beb02a18b19198485b1
 }
 
 export default App;
