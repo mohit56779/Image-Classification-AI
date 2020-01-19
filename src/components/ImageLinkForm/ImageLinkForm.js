@@ -8,7 +8,7 @@ const ImageLinkForm = ({onInputChange, onButtonSubmit}) => {
         <div id= "parent">
         <div>
             <p className = 'f3'>
-                {'SmartFoodie will help you know what you can eat!'}
+                {'SmartFoodie helps high blood pressure patients find what to eat and what to avoid!'}
             </p>
         </div>
         <div className= 'center'>
@@ -26,7 +26,9 @@ const ImageLinkForm = ({onInputChange, onButtonSubmit}) => {
             
         </div>
         
-        
+        <h4> Note: The upload function does not work in this version. You need to put the url in the text box. You can upload your image to drive and get a link. 
+            </h4> <h4> To get a URL for your image go to <a href="https://imgur.com/upload?beta"  target="_blank"> https://imgur.com/upload?beta </a> , upload your image and right click on the image and click on 'open image in new tab'. Copy and paste that page's link.</h4>
+            <h4>For testing you can use any image from google.</h4>
         
         </div>
        
