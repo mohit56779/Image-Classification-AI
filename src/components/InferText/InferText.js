@@ -5,7 +5,7 @@ const InferText = (check) => {
     if (check.inferText === "true") {
         return (
             <div className = "center">
-                <h2> "This food is okay to eat!" </h2>
+                <h2> "This food is SAFE to eat for high blood pressure condition!" </h2>
     
             </div>
         );
@@ -13,7 +13,7 @@ const InferText = (check) => {
     else if (check.inferText === "false"){
         return (
             <div className = "center">
-                <h2> "This food is NOT okay to eat!" </h2>
+                <h2> "This food is NOT SAFE to eat for high blood pressure condition. Please Avoid it!" </h2>
     
             </div>
         );
