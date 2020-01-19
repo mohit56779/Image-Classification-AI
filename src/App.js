@@ -1,6 +1,7 @@
 import React from 'react';
 import Clarifai from 'clarifai';
 import Navigation from './components/Navigation/Navigation';
+import Signin from './components/Signin/Signin';
 import FoodRecognition from './components/FoodRecognition/FoodRecognition';
 import Rank from './components/Rank/Rank.js';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm.js';
@@ -23,18 +24,25 @@ class App extends React.Component {
     }
   }
 
+  componentDidMount(){
+    fetch('http://localhost:3000')
+      .then(response => response.json())
+      .then(console.log)
+  }
+
   onInputChange = (event) =>{
     this.setState({input: event.target.value});
   }
+  // returns true or false based on if it's ok for patients or not
   infer = (concepts) =>{
     console.log("hello");
-    var con_list;
-    con_list = [];
+    var con_list = [];
     for(var i=0; i< concepts.length;i++){
       console.log(i);
-      con_list.put(concepts[i].name)
+      con_list.push(concepts[i].name);
 
     }
+    console.log("hi");
     console.log(con_list);
   }
   onButtonSubmit = () =>{
@@ -59,6 +67,7 @@ class App extends React.Component {
       
       
       <Navigation />
+      <Signin />
       <Rank />
       <ImageLinkForm onInputChange = {this.onInputChange} onButtonSubmit = {this.onButtonSubmit}/>
 
