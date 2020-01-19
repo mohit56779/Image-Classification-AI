@@ -1,6 +1,7 @@
 import React from 'react';
 import Clarifai from 'clarifai';
 import Navigation from './components/Navigation/Navigation';
+import Signin from './components/Signin/Signin';
 import FoodRecognition from './components/FoodRecognition/FoodRecognition';
 import InferText from './components/InferText/InferText.js';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm.js';
@@ -25,11 +26,19 @@ class App extends React.Component {
     }
   }
 
+  componentDidMount(){
+    fetch('http://localhost:3000')
+      .then(response => response.json())
+      .then(console.log)
+  }
+
   onInputChange = (event) =>{
     this.setState({input: event.target.value});
   }
+  // returns true or false based on if it's ok for patients or not
   infer = (concepts) =>{
     console.log("hello");
+
     //var con_list;
     //con_list = [];
     for(var i=0; i< concepts.length;i++){
@@ -48,6 +57,7 @@ class App extends React.Component {
 
     }
     return true;
+
   }
   onButtonSubmit = () =>{
    // console.log("submit");
@@ -79,6 +89,7 @@ class App extends React.Component {
   
 
   render(){
+
   if(this.check === true){
     
     return (
@@ -89,6 +100,7 @@ class App extends React.Component {
         
         
         <ImageLinkForm onInputChange = {this.onInputChange} onButtonSubmit = {this.onButtonSubmit}/>
+
 
         <InferText inferText = "true"/>
         <FoodRecognition imageUrl = {this.state.imageUrl} />
