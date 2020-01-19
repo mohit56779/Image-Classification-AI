@@ -20,7 +20,19 @@ const InferText = (check) => {
 
  
     }
-    return null;
+
+    else if (check.inferText === ""){
+        return (
+            <div className = "center">
+                <h2> Put an image of a Food. </h2>
+    
+            </div>
+        );
+
+ 
+    }
+    
+    
 
 
 }

@@ -20,7 +20,8 @@ class App extends React.Component {
     this.check = "";
     this.state={
       input:"",
-      imageUrl: ""
+      imageUrl: "",
+      change:""
     }
   }
 
@@ -60,13 +61,16 @@ class App extends React.Component {
         var concepts = response['outputs'][0]['data']['concepts'];
       //  console.log(concepts);
         this.check = this.infer(concepts);
+        
+        // state changed to change check text
+        this.setState({change:true});
         //console.log(check);
-        if(this.check === true){
-          console.log("OK");
-        }
-        else{
-          console.log("NOT OK!");
-        }
+        //if(this.check === true){
+        //  console.log("OK");
+       // }
+        //else{
+        //  console.log("NOT OK!");
+        //}
 
 
 
@@ -83,10 +87,10 @@ class App extends React.Component {
         
         <Navigation />
         
-        <InferText inferText = "true"/>
+        
         <ImageLinkForm onInputChange = {this.onInputChange} onButtonSubmit = {this.onButtonSubmit}/>
 
-    
+        <InferText inferText = "true"/>
         <FoodRecognition imageUrl = {this.state.imageUrl} />
       </div>
     );
@@ -100,9 +104,9 @@ class App extends React.Component {
             
             <Navigation />
             
-            <InferText inferText = "false"/>
+            
             <ImageLinkForm onInputChange = {this.onInputChange} onButtonSubmit = {this.onButtonSubmit}/>
-    
+            <InferText inferText = "false"/>
         
             <FoodRecognition imageUrl = {this.state.imageUrl} />
           </div>
@@ -117,10 +121,10 @@ class App extends React.Component {
                 
                 <Navigation />
                 
-                <InferText inferText = ""/>
+                
                 <ImageLinkForm onInputChange = {this.onInputChange} onButtonSubmit = {this.onButtonSubmit}/>
         
-            
+                <InferText inferText = ""/>
                 <FoodRecognition imageUrl = {this.state.imageUrl} />
               </div>
             );
