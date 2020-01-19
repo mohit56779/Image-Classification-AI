@@ -1,4 +1,13 @@
 .form{
-    width: 700px;
+    width: 900px;
+    
 }
 
+.but{
+    margin-top: 100px;
+    padding-top: 100px;
+}
+
+.new-line {
+    white-space: pre-line;
+  }

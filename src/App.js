@@ -3,7 +3,7 @@ import Clarifai from 'clarifai';
 import Navigation from './components/Navigation/Navigation';
 import Signin from './components/Signin/Signin';
 import FoodRecognition from './components/FoodRecognition/FoodRecognition';
-import Rank from './components/Rank/Rank.js';
+import InferText from './components/InferText/InferText.js';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm.js';
 
 
@@ -18,9 +18,11 @@ const app = new Clarifai.App({
 class App extends React.Component {
   constructor(){
     super();
+    this.check = "";
     this.state={
       input:"",
-      imageUrl: ""
+      imageUrl: "",
+      change:""
     }
   }
 
@@ -36,16 +38,29 @@ class App extends React.Component {
   // returns true or false based on if it's ok for patients or not
   infer = (concepts) =>{
     console.log("hello");
-    var con_list = [];
+
+    //var con_list;
+    //con_list = [];
     for(var i=0; i< concepts.length;i++){
-      console.log(i);
-      con_list.push(concepts[i].name);
+      //console.log(i);
+      //con_list.put(concepts[i].name)
+      var string_1 = concepts[i].name;
+      if (string_1.includes("salt")
+          || string_1.includes("fat") 
+          || string_1.includes("sweet") 
+          || string_1.includes("carb") 
+          || string_1.includes("sodium") 
+          || string_1.includes("crystal") 
+          || string_1.includes("sugar")){
+            return false;
+          }
 
     }
-    console.log("hi");
-    console.log(con_list);
+    return true;
+
   }
   onButtonSubmit = () =>{
+   // console.log("submit");
     this.setState({imageUrl:this.state.input});
     app.models.initModel({id: Clarifai.GENERAL_MODEL, version: "aa7f35c01e0642fda5cf400f543e7c40"})
       .then(generalModel => {
@@ -54,28 +69,80 @@ class App extends React.Component {
       .then(response => {
         
         var concepts = response['outputs'][0]['data']['concepts'];
-        this.infer(concepts);
+      //  console.log(concepts);
+        this.check = this.infer(concepts);
+        
+        // state changed to change check text
+        this.setState({change:true});
+        //console.log(check);
+        //if(this.check === true){
+        //  console.log("OK");
+       // }
+        //else{
+        //  console.log("NOT OK!");
+        //}
+
 
 
       })
   }
-
- 
-  render(){
-  return (
-    <div className="App">
-      
-      
-      <Navigation />
-      <Signin />
-      <Rank />
-      <ImageLinkForm onInputChange = {this.onInputChange} onButtonSubmit = {this.onButtonSubmit}/>
-
   
-      <FoodRecognition imageUrl = {this.state.imageUrl} />
-    </div>
-  );
-    }
+
+  render(){
+
+  if(this.check === true){
+    
+    return (
+      <div className="App">
+        
+        
+        <Navigation />
+        
+        
+        <ImageLinkForm onInputChange = {this.onInputChange} onButtonSubmit = {this.onButtonSubmit}/>
+
+
+        <InferText inferText = "true"/>
+        <FoodRecognition imageUrl = {this.state.imageUrl} />
+      </div>
+    );
+      }
+
+      else if(this.check === false){
+    
+        return (
+          <div className="App">
+            
+            
+            <Navigation />
+            
+            
+            <ImageLinkForm onInputChange = {this.onInputChange} onButtonSubmit = {this.onButtonSubmit}/>
+            <InferText inferText = "false"/>
+        
+            <FoodRecognition imageUrl = {this.state.imageUrl} />
+          </div>
+        );
+          }
+
+          else{
+    
+            return (
+              <div className="App">
+                
+                
+                <Navigation />
+                
+                
+                <ImageLinkForm onInputChange = {this.onInputChange} onButtonSubmit = {this.onButtonSubmit}/>
+        
+                <InferText inferText = ""/>
+                <FoodRecognition imageUrl = {this.state.imageUrl} />
+              </div>
+            );
+              }
+  
+}
 }
 
 export default App;
