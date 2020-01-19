@@ -1,6 +1,5 @@
 import React from 'react';
 import Navigation from './components/Navigation/Navigation';
-import Logo from './components/Logo/Logo.js';
 import Rank from './components/Rank/Rank.js';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm.js';
 
@@ -11,7 +10,7 @@ function App() {
   return (
     <div className="App">
       <Navigation />
-      <Logo />
+      
       <Rank />
       <ImageLinkForm />
       {/*}
